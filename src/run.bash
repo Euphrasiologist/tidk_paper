@@ -20,6 +20,14 @@ tidk explore -m 5 -x 30 --distance 0.001 ../data/bombus_sylvestris.fa > ../data/
 # now we can search for this across the genome
 tidk search -s AACCT -o bomSyl -d ../data -e tsv ../data/bombus_sylvestris.fa
 
+# and for the reviewers
+# filter ../data/bombus_sylvestris so we just have the first record
+# requires mmft.
+mmft regex -r "1 softmasked:chromosome" ../data/bombus_sylvestris.fa > ../data/bomb_chrom_1.fa
+
+# now run tidk again, but with a window size of 500
+tidk search -s AACCT -o bomSyl_chrom_1_500 -d ../data -w 500 -e tsv ../data/bomb_chrom_1.fa
+
 # filter out the chromosomes we want
 # egrep, as we need extended grep for the pipes
 # sort as we'll want the chromosomes in order in the plot
@@ -30,6 +38,10 @@ egrep '^id|^1\s|^2\s|^3\s|^4\s|^5\s|^6\s|^7\s|^8\s|^9\s|^10\s' \
 
 # now we can plot
 tidk plot --fontsize 20 -o ../img/bomSyl -t ../data/bomSyl_telomeric_repeat_windows_filtered.tsv
+
+# manual edits done using the first 100bp and merging SVGs
+mmft extract -r 0-100 ../data/bomb_chrom_1.fa > ../data/first_100bp_chrom_1.fa
+
 # render the svg to PNG
 # I use the nice resvg library (https://github.com/RazrFalcon/resvg)
 resvg --background white --dpi 400 ../img/bomSyl.svg ../img/bomSyl.png
