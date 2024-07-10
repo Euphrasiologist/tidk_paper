@@ -1,0 +1,10 @@
+simulation_conditions	most_abundant_canonical_repeat_unit	most_abundant_count	most_abundant_6nt_canonical_repeat_unit	most_abundant_6nt_count	AACCCT_count	total_canonical_repeats
+len12000_err0.01	AACCT	1464	AACCCT	460	460	8
+len12000_err0.05	AACCG	1658	N	0	0	21
+len12000_err0.1	AAGGT	2086	N	0	0	34
+len30000_err0.01	AAACC	3938	AACCCT	448	448	7
+len30000_err0.05	AGCCT	4761	N	0	0	31
+len30000_err0.1	AAGGT	5330	N	0	0	39
+len600_err0.01	AACCCT	88	AACCCT	88	88	3
+len600_err0.05	AACCC	108	AACCCT	64	64	8
+len600_err0.1	ACCCT	105	AACCCT	60	60	19

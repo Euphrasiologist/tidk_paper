@@ -5,9 +5,9 @@ sequence_lengths=(600 12000 30000)
 error_rates=(0.1 0.05 0.01)
 num_sequences=1000
 motif="TTAGGG"
-simulation_dir="simulation"
-tidk_output_dir="tidk_output"
-summary_file="tidk_explore_summary_results.tsv"
+simulation_dir="../data/simulation"
+tidk_output_dir="../data/tidk_output"
+summary_file="../data/tidk_explore_summary_results.tsv"
 # in the current directory
 python_script="./random_telomere_generator.py"
 
