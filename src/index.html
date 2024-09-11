@@ -4,11 +4,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A telomere repeat array</title>
+  <title>tidk plots and supplementary information</title>
 </head>
 
 <body>
+  <h1>Manuscript and supplementary plots</h1>
+
+  <h2>The telomere array plot</h2>
+  <p>This plot shows the first 100 base pairs of chromosome 1 from the <em>Bombus sylvestris</em> genome assembly</p>
   <div id="telomere_array_plot"></div>
+
+  <h2>Time complexity of <code>tidk explore</code></h2>
+  <p>For the first plot, we iterate over 25 kmers, and this roughly takes 20 seconds per gigabase.</p>
+  <div id="plot2"></div>
+  <p>For the second plot, we iterate over 11 kmers, and this roughly takes 10 seconds per gigabase.</p>
+  <div id="plot3"></div>
+
+  <h2>Time complexity of the algorithms in <code>tidk search</code></h2>
+  <p>And finally, the <code>tidk search</code> plot.</p>
+  <div id="plot4"></div>
 </body>
 
 <script type="module">
@@ -48,6 +62,113 @@
 
   const div = document.querySelector("#telomere_array_plot");
   div.append(plot);
+
+  // Time complexity for tidk explore
+  const format_ticks = (d) => {
+    if (d >= 1000000000) {
+      return d / 1000000000 + "Gb";
+    } else if (d > 1000000 && d < 1000000000) {
+      return d / 1000000 + "Mb";
+    } else {
+      return d / 1000 + " Kb";
+    }
+  }
+
+  const o_data = [
+    {"Time (s)": 6.279, "Genome size (bp)": 1 * 302565711},
+    {"Time (s)": 12.343, "Genome size (bp)": 2 * 302565711},
+    {"Time (s)": 18.5, "Genome size (bp)": 3 * 302565711},
+    {"Time (s)": 24.579, "Genome size (bp)": 4 * 302565711},
+    {"Time (s)": 30.839, "Genome size (bp)": 5 * 302565711}
+  ];
+
+  const plot2 = Plot.line(o_data, {x: "Genome size (bp)", y: "Time (s)"}).plot({
+    title: "Parameters: -m 5 -x 30 --distance 0.001",
+    x: {tickFormat: format_ticks},
+    marks: [
+      Plot.link(o_data, {
+        x1: 1000000000,
+        x2: 1000000000,
+        y1: 0,
+        y2: 20.4,
+        strokeDasharray: 2
+      }),
+      Plot.link(o_data, {
+        x1: 300000000,
+        x2: 1000000000,
+        y1: 20.4,
+        y2: 20.4,
+        strokeDasharray: 2
+      })
+    ]
+  });
+  const div2 = document.querySelector("#plot2");
+  div2.append(plot2);
+
+  const o_data3 = [
+    {"Time (s)": 2.807, "Genome size (bp)": 1 * 302565711},
+    {"Time (s)": 5.65, "Genome size (bp)": 2 * 302565711},
+    {"Time (s)": 8.699, "Genome size (bp)": 3 * 302565711},
+    {"Time (s)": 11.344, "Genome size (bp)": 4 * 302565711},
+    {"Time (s)": 14.0, "Genome size (bp)": 5 * 302565711}
+  ];
+
+  const plot3 = Plot.line(o_data3, {x: "Genome size (bp)", y: "Time (s)"}).plot({
+    title: "Parameters: -m 4 -x 15 --distance 0.001",
+    x: {tickFormat: format_ticks},
+    marks: [
+      Plot.link(o_data3, {
+        x1: 1000000000,
+        x2: 1000000000,
+        y1: 0,
+        y2: 9.7,
+        strokeDasharray: 2
+      }),
+      Plot.link(o_data3, {
+        x1: 300000000,
+        x2: 1000000000,
+        y1: 9.7,
+        y2: 9.7,
+        strokeDasharray: 2
+      })
+    ]
+  });
+
+  const div3 = document.querySelector("#plot3");
+  div3.append(plot3);
+
+  // the tidk search plot
+  const o_data2 = [
+    {"Time (s)": 2.92, "Genome size (bp)": 1 * 302565711},
+    {"Time (s)": 6.14, "Genome size (bp)": 2 * 302565711},
+    {"Time (s)": 8.692, "Genome size (bp)": 3 * 302565711},
+    {"Time (s)": 11.963, "Genome size (bp)": 4 * 302565711},
+    {"Time (s)": 15.241, "Genome size (bp)": 5 * 302565711}
+  ];
+
+  const plot4 = Plot.line(o_data2, {x: "Genome size (bp)", y: "Time (s)"}).plot({
+    title: "Parameters -s AACCT",
+    x: {tickFormat: format_ticks},
+    marks: [
+      Plot.link(o_data2, {
+        x1: 1000000000,
+        x2: 1000000000,
+        y1: 0,
+        y2: 9.7,
+        strokeDasharray: 2
+      }),
+      Plot.link(o_data2, {
+        x1: 300000000,
+        x2: 1000000000,
+        y1: 9.7,
+        y2: 9.7,
+        strokeDasharray: 2
+      })
+    ]
+  });
+
+  const div4 = document.querySelector("#plot4");
+  div4.append(plot4);
 </script>
 
 
