@@ -7,9 +7,7 @@ Max R. Brown (1), Pablo Gonzalez de La Rosa (2), Mark Blaxter (2)
 
 Repository for analysis and supplementary materials presented for the above paper.
 
-- The main figure and analysis can be run with `cd src; bash ./src/run.bash`
-- The complexity data used in the supplementary can be run with `cd src; bash complexity.bash`
-- The simulations of error rates in `tidk explore` can be run with `cd src; bash accuracy_simulation.bash`
+Please go to the `./src` directory for more information on how to run the analyses yourself.
 
 ## Supplementary information
 
