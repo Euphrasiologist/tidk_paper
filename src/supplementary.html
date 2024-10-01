@@ -40,41 +40,6 @@
 <script type="module">
   import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
 
-  // the first 100 base pairs of chromosome 1
-  const seq = "ctaacctaacctaacccgaacctaacccgaacctaacccgaacctaacccgaacctaacccgaacctaacccgaacctaacccgaacctaacccgaacct".toUpperCase();
-
-  const split_data = seq
-    .split(/(AACCT)/g)
-    .filter((e) => e !== "")
-    .map((e) => {
-      return {
-        seq: e
-      };
-    });
-
-  const plot = Plot.plot({
-    marginLeft: 80,
-    marginRight: 80,
-    width: 1600,
-    x: {tickFormat: (d) => d + 1},
-    marks: [
-      Plot.text(["0bp"], {x: 0, dx: -50, dy: 25}),
-      Plot.text(["100bp"], {x: 18, dx: +48, dy: 25}),
-      Plot.text(
-        split_data.map((e, i) => e.seq),
-        {
-          x: (d, i) => i,
-          textAnchor: "middle",
-          fillOpacity: (d) => (d === "AACCT" ? 1 : 0.5),
-          fontSize: (d) => (d === "AACCT" ? 20 : 18)
-        }
-      )
-    ]
-  });
-
-  // const div = document.querySelector("#telomere_array_plot");
-  // div.append(plot);
-
   // Time complexity for tidk explore
   const format_ticks = (d) => {
     if (d >= 1000000000) {

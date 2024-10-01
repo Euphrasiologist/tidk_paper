@@ -1,8 +1,10 @@
 # Notes on running
 
-You will need latest `tidk` installed and in $PATH.
+You will need latest `tidk` installed and in $PATH. This can be done in one of three ways:
 
 ```bash
+# 1. Using Rust
+
 # install Rust. Follow:
 # https://www.rust-lang.org/tools/install
 
@@ -10,25 +12,50 @@ You will need latest `tidk` installed and in $PATH.
 git clone https://github.com/tolkit/telomeric-identifier
 cd telomeric-identifier
 cargo install --path=.
+
+# OR from crates.io
+cargo install tidk
+
+# 2. From the latest releases on GitHub
+# e.g. for a Mac
+curl -LJO https://github.com/tolkit/telomeric-identifier/releases/download/v0.2.62/tidk-x86_64-apple-darwin.tar.xz && tar -xvf tidk-x86_64-apple-darwin.tar.xz; cd tidk-x86_64-apple-darwin/ && chmod +x tidk
+
+# 3. Install from conda
+# latest version may still be being updated/uploaded
+conda install -c bioconda tidk
 ```
 
 ## Main analysis
 
-This will run the script to generate the main plot figure in the manuscript:
+The main plot (Figure 1) is generated from two different programs. Part A of the Figure is generated from the bash script below.
+
+There is some prerequisite software to download. The script has also been written on a Mac, so bear that in mind.
 
 ```bash
+# 1. mmft for fasta manipulation. seqtk/seqkit are probably better alternatives, but you'd need to modify the script slightly
+git clone https://github.com/ARU-life-sciences/mmft
+cd mmft; cargo install --path=.
+
+# 2. resvg for rendering SVG plots to a PNG file.
+cargo install resvg
+
 bash run.bash
 ```
+
+Generated data is in the `../data` directory and images are placed in the `../img` directory. `run.bash` creates Figure 1A.
+
+Figure 1B was created by manually extracting the first 100bp of chromosome 1. The base pairs are directly embedded into the HTML. View Figure 1B by opening `./figure1B.html`.
 
 ## Complexity
 
 The time and complexity of the commands can be estimated using this script:
 
 ```bash
-bash complexity.bash
+# using the create argument, we generate the data too - not necessary if you've already made the data once.
+bash complexity.bash create
 ```
 
-The times are printed to stdout and are compiled/plotted [here](https://observablehq.com/@euphrasiologist/sketches-for-tidk-manuscript).
+The times are printed to stdout and are compiled/plotted in an HTML document. Open `./supplementary.html` to view the plots.
 
 ## Simulation analysis
 
@@ -37,3 +64,5 @@ To understand if `tidk explore` works well under different error rates:
 ```bash
 bash accuracy_simulation.bash
 ```
+
+This must be run in the current directory (i.e. `./src`) as the paths in the script are hard-coded.

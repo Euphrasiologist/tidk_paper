@@ -2,7 +2,7 @@
 
 # Define the parameters
 sequence_lengths=(600 12000 30000)
-error_rates=(0.1 0.05 0.01)
+error_rates=(0.0 0.1 0.05 0.02 0.015 0.01 0.001)
 num_sequences=1000
 motif="TTAGGG"
 simulation_dir="../data/simulation"

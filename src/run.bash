@@ -9,7 +9,7 @@ gunzip ../data/bombus_sylvestris.fa.gz
 # run explore
 # assumes tidk is in PATH
 # emits a TSV to STDOUT by default
-tidk --version # == 0.2.5 - latest on GitHub
+tidk --version # == 0.2.5 
 
 tidk explore -m 5 -x 30 --distance 0.001 ../data/bombus_sylvestris.fa > ../data/bomSyl_telomere.tsv
 
@@ -47,6 +47,6 @@ mmft extract -r 0-100 ../data/bomb_chrom_1.fa > ../data/first_100bp_chrom_1.fa
 resvg --background white --dpi 400 ../img/bomSyl.svg ../img/bomSyl.png
 
 # also plot in R, if we are so inclined.
-Rscript plot.R
+# Rscript plot.R
 # delete the big data
 rm ../data/bombus_sylvestris.fa
