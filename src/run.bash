@@ -46,7 +46,5 @@ mmft extract -r 0-100 ../data/bomb_chrom_1.fa > ../data/first_100bp_chrom_1.fa
 # I use the nice resvg library (https://github.com/RazrFalcon/resvg)
 resvg --background white --dpi 400 ../img/bomSyl.svg ../img/bomSyl.png
 
-# also plot in R, if we are so inclined.
-# Rscript plot.R
 # delete the big data
 rm ../data/bombus_sylvestris.fa
