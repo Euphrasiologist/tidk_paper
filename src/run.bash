@@ -31,7 +31,8 @@ tidk search -s AACCT -o bomSyl_chrom_1_500 -d ../data -w 500 -e tsv ../data/bomb
 # filter out the chromosomes we want
 # egrep, as we need extended grep for the pipes
 # sort as we'll want the chromosomes in order in the plot
-egrep '^id|^1\s|^2\s|^3\s|^4\s|^5\s|^6\s|^7\s|^8\s|^9\s|^10\s' \
+# use egrep if on a Mac
+grep -E '^id|^1\s|^2\s|^3\s|^4\s|^5\s|^6\s|^7\s|^8\s|^9\s|^10\s' \
   ../data/bomSyl_telomeric_repeat_windows.tsv | \
   sort -s -n -k 1,1 \
   > ../data/bomSyl_telomeric_repeat_windows_filtered.tsv
@@ -43,7 +44,6 @@ tidk plot --fontsize 20 -o ../img/bomSyl -t ../data/bomSyl_telomeric_repeat_wind
 mmft extract -r 0-100 ../data/bomb_chrom_1.fa > ../data/first_100bp_chrom_1.fa
 
 # render the svg to PNG
-# I use the nice resvg library (https://github.com/RazrFalcon/resvg)
 resvg --background white --dpi 400 ../img/bomSyl.svg ../img/bomSyl.png
 
 # delete the big data

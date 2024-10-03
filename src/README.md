@@ -44,7 +44,7 @@ bash run.bash
 
 Generated data is in the `../data` directory and images are placed in the `../img` directory. `run.bash` creates Figure 1A.
 
-Figure 1B was created by manually extracting the first 100bp of chromosome 1. The base pairs are directly embedded into the HTML. View Figure 1B by opening `./figure1B.html`.
+Figure 1B was created by extracting the first 100bp of chromosome 1 (see `run.bash`; the extracted base pairs are in `../data/first_100bp_chrom_1.fa` - you will need to generate this yourself). The base pairs are directly embedded into the HTML. View Figure 1B by opening `./figure1B.html`.
 
 ## Complexity
 
@@ -55,7 +55,7 @@ The time and complexity of the commands can be estimated using this script:
 bash complexity.bash create
 ```
 
-The times are printed to stdout and are compiled/plotted in an HTML document. Open `./supplementary.html` to view the plots.
+The times are printed to stdout and were manually compiled and then plotted in an HTML document. Open `./supplementary.html` to view the plots.
 
 ## Simulation analysis
 
