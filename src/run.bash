@@ -1,3 +1,40 @@
+# software versions
+# tidk == 0.2.63
+# mmft == 0.2.1
+# resvg == 0.44.0
+
+# explicitly check the software are installed
+if ! [ -x "$(command -v tidk)" ]; then
+  echo 'Error: tidk is not installed.' >&2
+  exit 1
+fi
+
+if ! [ -x "$(command -v mmft)" ]; then
+  echo 'Error: mmft is not installed.' >&2
+  exit 1
+fi
+
+if ! [ -x "$(command -v resvg)" ]; then
+  echo 'Error: resvg is not installed.' >&2
+  exit 1
+fi
+
+# and that the correct versions
+if [[ $(tidk --version) != "tidk 0.2.63" ]]; then
+  echo 'Error: tidk is not the correct version.' >&2
+  exit 1
+fi
+
+if [[ $(mmft --version) != "mmft 0.2.1" ]]; then
+  echo 'Error: mmft is not the correct version.' >&2
+  exit 1
+fi
+
+if [[ $(resvg --version) != "0.44.0" ]]; then
+  echo 'Error: resvg is not the correct version.' >&2
+  exit 1
+fi
+
 # short pipeline to download and run tidk
 
 # fetch

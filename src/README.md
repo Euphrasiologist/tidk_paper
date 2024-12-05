@@ -16,9 +16,9 @@ cargo install --path=.
 # OR from crates.io
 cargo install tidk
 
-# 2. From the latest releases on GitHub
+# 2. From the latest releases on GitHub. Version 0.2.63.
 # e.g. for a Mac
-curl -LJO https://github.com/tolkit/telomeric-identifier/releases/download/v0.2.62/tidk-x86_64-apple-darwin.tar.xz && tar -xvf tidk-x86_64-apple-darwin.tar.xz
+curl -LJO https://github.com/tolkit/telomeric-identifier/releases/download/v0.2.63/tidk-x86_64-apple-darwin.tar.xz && tar -xvf tidk-x86_64-apple-darwin.tar.xz
 cd tidk-x86_64-apple-darwin/ && chmod +x tidk
 
 # 3. Install from conda
@@ -33,13 +33,20 @@ The main plot (Figure 1) is generated from two different programs. Part A of the
 There is some prerequisite software to download. The script has also been written on a Mac, so bear that in mind.
 
 ```bash
-# 1. mmft for fasta manipulation. seqtk/seqkit are probably better alternatives, but you'd need to modify the script slightly
-curl -LJO https://github.com/ARU-life-sciences/mmft/releases/download/v0.2.0/mmft-x86_64-apple-darwin.tar.xz && tar -xvf mmft-x86_64-apple-darwin.tar.xz; 
+# 1. mmft for fasta manipulation. Version 0.2.1.
+# See the releases page for different platforms (*all major platforms supported*)
+# https://github.com/ARU-life-sciences/mmft/releases/tag/v0.2.1
+curl -LJO https://github.com/ARU-life-sciences/mmft/releases/download/v0.2.1/mmft-x86_64-apple-darwin.tar.xz && tar -xvf mmft-x86_64-apple-darwin.tar.xz; 
 cd mmft-x86_64-apple-darwin.tar.xz && chmod +x mmft
 
 # 2. resvg for rendering SVG plots to a PNG file.
-# this command below requires a rust toolchain, but can be downloaded: https://github.com/RazrFalcon/resvg/releases/tag/v0.44.0
-cargo install resvg
+# this command below requires a rust toolchain, but can be downloaded: https://github.com/RazrFalcon/resvg/releases/tag/v0.44.0, or through conda-forge.
+
+# through cargo
+# cargo install resvg
+
+# may be easier through conda
+conda install resvg=0.44.0 # or `conda install -c conda-forge resvg`
 
 bash run.bash
 ```
