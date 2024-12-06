@@ -3,6 +3,9 @@
 # mmft == 0.2.1
 # resvg == 0.44.0
 
+# you must download all software needed into PATH
+# before running this pipeline.
+
 # explicitly check the software are installed
 if ! [ -x "$(command -v tidk)" ]; then
   echo 'Error: tidk is not installed.' >&2
@@ -44,10 +47,6 @@ curl -o ../data/bombus_sylvestris.fa.gz https://ftp.ensembl.org/pub/rapid-releas
 gunzip ../data/bombus_sylvestris.fa.gz
 
 # run explore
-# assumes tidk is in PATH
-# emits a TSV to STDOUT by default
-tidk --version # == 0.2.5 
-
 tidk explore -m 5 -x 30 --distance 0.001 ../data/bombus_sylvestris.fa > ../data/bomSyl_telomere.tsv
 
 # look at the output
