@@ -3,6 +3,21 @@
 You will need latest `tidk` installed and in `$PATH`. This can be done in one of three ways:
 
 ```bash
+# If you use conda, install all the dependencies as such:
+conda create -n tidk -c bioconda mmft=0.2.1 tidk=0.2.63 resvg=0.44.0
+# name: tidk
+# channels:
+#   - conda-forge
+#   - bioconda
+#   - defaults
+# dependencies:
+#   - ca-certificates=2024.8.30=hf0a4a13_0
+#   - libcxx=19.1.5=ha82da77_0
+#   - mmft=0.2.1=h56ff5df_0
+#   - openssl=3.4.0=h39f12f2_0
+#   - resvg=0.44.0=h0716509_1
+#   - tidk=0.2.63=ha48a4ba_1
+
 # 1. Using Rust
 
 # install Rust. Follow:
