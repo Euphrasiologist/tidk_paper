@@ -5,6 +5,9 @@ You will need latest `tidk` installed and in `$PATH`. This can be done in one of
 ```bash
 # If you use conda, install all the dependencies as such:
 conda create -n tidk -c bioconda mmft=0.2.1 tidk=0.2.63 resvg=0.44.0
+conda activate tidk
+
+# these are the dependencies from my conda installation.
 # name: tidk
 # channels:
 #   - conda-forge
