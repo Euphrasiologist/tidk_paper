@@ -88,7 +88,7 @@ Pseudocode for a *tidk* algorithm used in `tidk explore`. The algorithm is used 
     
         For(cond: "kmer, count in hashmap.items", {
             Cmt[Compute the minimal form for this kmer]
-            Assign[nimal_form][compute_minimal_form(kmer)]
+            Assign[minimal_form][compute_minimal_form(kmer)]
        
             Cmt[Merge counts using the minimal form as the key]
             If(cond: "minimal_form in merged_hashmap", {
